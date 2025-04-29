@@ -72,8 +72,8 @@ Subheading example:
 
 ## 📬 Contact
 
-You can reach me via the [Contact page](./contact.html), or email me at:  
-📧 `yourname@example.com`
+You can reach me via the [Contact page](http://atharvsrivastava.me), or email me at:  
+📧 `atharv10203040@gmail.com`
 
 ---
 
