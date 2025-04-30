@@ -2,11 +2,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('nav ul');
-    
+    const body = document.body; // Get body element
+
     if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
+        menuToggle.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent click from immediately closing menu
             navMenu.classList.toggle('active');
-            
+            body.classList.toggle('menu-open'); // Optional: Add class to body
+
             // Toggle icon between bars and times
             const icon = menuToggle.querySelector('i');
             if (icon.classList.contains('fa-bars')) {
@@ -17,38 +20,76 @@ document.addEventListener('DOMContentLoaded', function() {
                 icon.classList.add('fa-bars');
             }
         });
-        
+
         // Close menu when clicking on a link
         const navLinks = document.querySelectorAll('nav ul li a');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    body.classList.remove('menu-open'); // Optional: Remove class from body
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Optional: Close menu when clicking outside of it
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = navMenu.contains(event.target);
+            const isClickOnToggler = menuToggle.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickOnToggler && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
+                body.classList.remove('menu-open'); // Optional: Remove class from body
                 const icon = menuToggle.querySelector('i');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
-            });
+            }
         });
     }
-    
-    // Header scroll effect
+
+    // --- Header scroll effect & Back to Top Button ---
     const header = document.querySelector('header');
+    const backToTopButton = document.getElementById("backToTopBtn");
     let lastScrollTop = 0;
-    
-    window.addEventListener('scroll', function() {
+    const scrollThreshold = 300; // Pixels to scroll before showing the button
+
+    const handleScroll = () => {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down & past 100px - slightly hide header
-            header.style.transform = 'translateY(-10px)';
-            header.style.opacity = '0.8';
-        } else {
-            // Scrolling up or near top - show header
-            header.style.transform = 'translateY(0)';
-            header.style.opacity = '1';
+
+        // Header effect
+        if (header) {
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                header.style.transform = 'translateY(-10px)';
+                header.style.opacity = '0.8';
+            } else {
+                header.style.transform = 'translateY(0)';
+                header.style.opacity = '1';
+            }
         }
-        
-        lastScrollTop = scrollTop;
-    });
+
+        // Back to Top button visibility
+        if (backToTopButton) {
+            if (scrollTop > scrollThreshold) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Back to Top button click event
+    if (backToTopButton) {
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
     
     // Fixed scroll down arrow functionality
     const scrollDownArrow = document.getElementById('scrollDown');

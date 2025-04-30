@@ -14,119 +14,13 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Override global body padding for this page */
-        body {
-            padding-top: 0 !important; /* Remove top padding */
-        }
-
-        .error-container {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh; /* Ensure it takes full viewport height */
-            padding: 20px;
-            text-align: center;
-            color: white;
-            margin-top: 0; /* Remove any potential top margin */
-        }
-
-        /* Ensure header doesn't push content down unnecessarily on this page */
-        header {
-            position: fixed; /* Keep header fixed */
-        }
-
-        /* Ensure background covers the whole page */
-        .nature-bg-container {
-            position: fixed; /* Keep background fixed */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-        }
-
-        .error-code {
-            font-family: "Dancing Script", cursive;
-            font-size: 120px;
-            margin: 0 0 10px 0;
-            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
-            line-height: 1;
-        }
-
-        .error-title {
-            font-family: "Playfair Display", serif;
-            font-size: 36px;
-            margin: 0 0 30px 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .error-message {
-            font-family: "Playfair Display", serif;
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 0 40px 0;
-            line-height: 1.6;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-        }
-
-        .back-home {
-            display: inline-block;
-            background: linear-gradient(135deg, #004d40, #00251a);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 3px 10px rgba(0, 77, 64, 0.25);
-            text-decoration: none;
-            font-family: "Playfair Display", serif;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .back-home:hover {
-            background: linear-gradient(135deg, #00695c, #003d33);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 77, 64, 0.35);
-        }
-
-        .poem-quote {
-            font-family: "Dancing Script", cursive;
-            font-style: italic;
-            font-size: 22px;
-            margin-top: 50px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-        }
-
-        @media (max-width: 600px) {
-            .error-code {
-                font-size: 80px;
-            }
-
-            .error-title {
-                font-size: 24px;
-            }
-
-            .error-message {
-                font-size: 16px;
-            }
-
-            .poem-quote {
-                font-size: 18px;
-            }
-        }
-    </style>
 </head>
 
-<body>
+<body class="page-404">
     <!-- Background container outside of main content -->
     <div class="nature-bg-container">
-        <div class="content-overlay" style="background: rgba(0, 0, 0, 0.5);">
-            <!-- Slightly darker overlay for better readability -->
+        <div class="content-overlay">
+            <!-- Overlay content moved to CSS -->
         </div>
     </div>
 
@@ -149,10 +43,14 @@
     <div class="error-container">
         <h1 class="error-code">404</h1>
         <h2 class="error-title">Page Not Found</h2>
-        <p class="error-message">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        <p class="error-message">The page you are looking for might have been removed, had its name changed, or is
+            temporarily unavailable.</p>
         <a href="index.html" class="back-home">Return to Homepage</a>
         <p class="poem-quote">"Not all those who wander are lost, but this page certainly is."</p>
     </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <script src="script.js"></script>
 </body>
