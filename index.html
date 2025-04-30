@@ -52,16 +52,19 @@
     <main id="mainContent">
         <section class="content-section">
             <h2>Featured Poems</h2>
-            <p>Discover the beauty of words in our carefully curated collection.</p>
+            <p class="section-description">Discover the beauty of words in our carefully curated collection of timeless
+                poetry.</p>
 
-            <!-- Sample content - Removed inline styles -->
-            <div>
+            <div class="poems-grid">
                 <article class="poem-article">
                     <h3>Whispers of Nature</h3>
                     <p>The leaves dance in harmony with the wind,<br>
                         As sunlight filters through ancient trees,<br>
                         Nature's poetry written in gold and green.</p>
-                    <a href="404.html">Read more →</a>
+                    <div class="poem-meta">
+                        <span class="poem-author">By Emily Rivers</span>
+                        <a href="404.html" class="read-more">Read more →</a>
+                    </div>
                 </article>
 
                 <article class="poem-article">
@@ -69,7 +72,10 @@
                     <p>Words unspoken hang in the air,<br>
                         Memories of moments we once shared,<br>
                         In silence, the loudest truths are declared.</p>
-                    <a href="404.html">Read more →</a>
+                    <div class="poem-meta">
+                        <span class="poem-author">By James Wilson</span>
+                        <a href="404.html" class="read-more">Read more →</a>
+                    </div>
                 </article>
 
                 <article class="poem-article">
@@ -77,11 +83,74 @@
                     <p>Waves crash upon the shoreline's edge,<br>
                         A timeless rhythm, nature's pledge,<br>
                         In every drop, a story told of depths untold.</p>
-                    <a href="404.html">Read more →</a>
+                    <div class="poem-meta">
+                        <span class="poem-author">By Sarah Chen</span>
+                        <a href="404.html" class="read-more">Read more →</a>
+                    </div>
                 </article>
+            </div>
+
+            <div class="cta-container">
+                <a href="404.html" class="btn btn-primary">View All Poems</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Latest Collections</h2>
+            <div class="collections-grid">
+                <div class="collection-card">
+                    <h3>Nature's Voice</h3>
+                    <p>Poems celebrating the beauty and power of the natural world.</p>
+                    <a href="404.html" class="collection-link">Explore Collection →</a>
+                </div>
+                <div class="collection-card">
+                    <h3>Love & Longing</h3>
+                    <p>Heartfelt verses about love, loss, and everything in between.</p>
+                    <a href="404.html" class="collection-link">Explore Collection →</a>
+                </div>
+                <div class="collection-card">
+                    <h3>Urban Rhythms</h3>
+                    <p>Modern poetry capturing the pulse of city life.</p>
+                    <a href="404.html" class="collection-link">Explore Collection →</a>
+                </div>
             </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MyLiterature</h3>
+                <p>Where words find their rhythm, and emotions become eternal.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="404.html">Explore</a></li>
+                    <li><a href="http://atharvsrivastava.me">About</a></li>
+                    <li><a href="404.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive updates on new poems and collections.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-secondary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MyLiterature. All rights reserved.</p>
+        </div>
+    </footer>
 
     <!-- Back to Top Button -->
     <button id="backToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
