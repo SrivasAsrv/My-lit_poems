@@ -49,4 +49,51 @@ document.addEventListener('DOMContentLoaded', function() {
         
         lastScrollTop = scrollTop;
     });
+    
+    // Fixed scroll down arrow functionality
+    const scrollDownArrow = document.getElementById('scrollDown');
+    
+    if (scrollDownArrow) {
+        scrollDownArrow.addEventListener('click', function() {
+            const mainContent = document.getElementById('mainContent');
+            if (mainContent) {
+                mainContent.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // Fallback if main content element doesn't exist
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+
+    // Add animation to articles on scroll
+    const animateOnScroll = function() {
+        const articles = document.querySelectorAll('article');
+        
+        articles.forEach((article, index) => {
+            const articlePosition = article.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (articlePosition < screenPosition) {
+                setTimeout(() => {
+                    article.style.opacity = 1;
+                    article.style.transform = 'translateX(0)';
+                }, index * 200); // Staggered animation
+            }
+        });
+    };
+
+    // Initialize articles for animation
+    const articles = document.querySelectorAll('article');
+    articles.forEach(article => {
+        article.style.opacity = 0;
+        article.style.transform = 'translateX(20px)';
+        article.style.transition = 'all 0.5s ease-out';
+    });
+    
+    // Run animation check on load and scroll
+    animateOnScroll();
+    window.addEventListener('scroll', animateOnScroll);
 });

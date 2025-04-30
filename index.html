@@ -17,11 +17,19 @@
 </head>
 
 <body>
-    <!-- Background container outside of main content -->
+    <!-- Background container as normal positioned element -->
     <div class="nature-bg-container">
         <div class="content-overlay">
             <h2>Welcome to MyLiterature</h2>
             <p>"Where words find their rhythm, and emotions become eternal."</p>
+            <div class="cta-buttons">
+                <a href="poems.html" class="btn btn-primary">Read Poems</a> <!-- Updated href -->
+                <a href="about.html" class="btn btn-secondary">About Me</a> <!-- Updated href -->
+            </div>
+            <!-- Add bouncing down arrow -->
+            <div class="scroll-down-arrow" id="scrollDown">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
     </div>
 
@@ -33,16 +41,46 @@
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="explore.html">Explore</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-                <li><a href="sign.html">Sign in</a></li>
+                <li><a href="404.html">Explore</a></li>
+                <li><a href="http://atharvsrivastava.me">About</a></li>
+                <li><a href="404.html">Contact</a></li>
+                <li><a href="404.html">Sign in</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <!-- Main content can go here -->
+    <main id="mainContent">
+        <section class="content-section">
+            <h2>Featured Poems</h2>
+            <p>Discover the beauty of words in our carefully curated collection.</p>
+
+            <!-- Sample content -->
+            <div style="margin-top: 40px; text-align: left;">
+                <article style="margin-bottom: 30px;">
+                    <h3 style="font-family: 'Dancing Script', cursive; font-size: 26px; color: #333;">Whispers of Nature</h3>
+                    <p style="font-style: italic; margin-bottom: 15px;">The leaves dance in harmony with the wind,<br>
+                        As sunlight filters through ancient trees,<br>
+                        Nature's poetry written in gold and green.</p>
+                    <a href="404.html" style="color: #8B2635; text-decoration: none; font-size: 14px; transition: all 0.3s ease;">Read more →</a>
+                </article>
+                
+                <article style="margin-bottom: 30px;">
+                    <h3 style="font-family: 'Dancing Script', cursive; font-size: 26px; color: #333;">Silent Echoes</h3>
+                    <p style="font-style: italic; margin-bottom: 15px;">Words unspoken hang in the air,<br>
+                        Memories of moments we once shared,<br>
+                        In silence, the loudest truths are declared.</p>
+                    <a href="404.html" style="color: #8B2635; text-decoration: none; font-size: 14px; transition: all 0.3s ease;">Read more →</a>
+                </article>
+                
+                <article style="margin-bottom: 30px;">
+                    <h3 style="font-family: 'Dancing Script', cursive; font-size: 26px; color: #333;">Ocean's Symphony</h3>
+                    <p style="font-style: italic; margin-bottom: 15px;">Waves crash upon the shoreline's edge,<br>
+                        A timeless rhythm, nature's pledge,<br>
+                        In every drop, a story told of depths untold.</p>
+                    <a href="404.html" style="color: #8B2635; text-decoration: none; font-size: 14px; transition: all 0.3s ease;">Read more →</a>
+                </article>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
