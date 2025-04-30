@@ -50,6 +50,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // --- Debounce utility function ---
+    function debounce(func, wait = 16) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
+
     // --- Header scroll effect & Back to Top Button ---
     const header = document.querySelector('header');
     const backToTopButton = document.getElementById("backToTopBtn");
@@ -82,7 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Debounced scroll handlers
+    const debouncedHandleScroll = debounce(handleScroll, 30);
 
     // Back to Top button click event
     if (backToTopButton) {
@@ -112,11 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add animation to articles on scroll
     const animateOnScroll = function() {
         const articles = document.querySelectorAll('article');
-        
         articles.forEach((article, index) => {
             const articlePosition = article.getBoundingClientRect().top;
             const screenPosition = window.innerHeight / 1.3;
-            
             if (articlePosition < screenPosition) {
                 setTimeout(() => {
                     article.style.opacity = 1;
@@ -125,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     };
+    const debouncedAnimateOnScroll = debounce(animateOnScroll, 30);
 
     // Initialize articles for animation
     const articles = document.querySelectorAll('article');
@@ -133,8 +142,8 @@ document.addEventListener('DOMContentLoaded', function() {
         article.style.transform = 'translateX(20px)';
         article.style.transition = 'all 0.5s ease-out';
     });
-    
     // Run animation check on load and scroll
     animateOnScroll();
-    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('scroll', debouncedHandleScroll, { passive: true });
+    window.addEventListener('scroll', debouncedAnimateOnScroll, { passive: true });
 });

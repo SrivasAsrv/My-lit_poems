@@ -734,3 +734,19 @@ body.page-404 .content-overlay {
     font-size: 16px;
   }
 }
+
+.poem-article {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.poem-article h3 {
+  /* Style for poem titles */
+  font-size: 1.6rem;
+  transition: color 0.3s ease;
+}
+
+.poem-article p {
+  font-style: italic;
+  margin-bottom: 15px;
+}
