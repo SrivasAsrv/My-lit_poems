@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('nav ul');
-    const body = document.body; // Get body element
+    const navMenu = document.querySelector('nav');
+    const body = document.body;
 
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function(event) {
-            event.stopPropagation(); // Prevent click from immediately closing menu
+            event.stopPropagation();
             navMenu.classList.toggle('active');
-            body.classList.toggle('menu-open'); // Optional: Add class to body
-
+            body.classList.toggle('menu-open');
+            
             // Toggle icon between bars and times
             const icon = menuToggle.querySelector('i');
             if (icon.classList.contains('fa-bars')) {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.addEventListener('click', function() {
                 if (navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
-                    body.classList.remove('menu-open'); // Optional: Remove class from body
+                    body.classList.remove('menu-open');
                     const icon = menuToggle.querySelector('i');
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
@@ -35,14 +35,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Optional: Close menu when clicking outside of it
+        // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             const isClickInsideMenu = navMenu.contains(event.target);
             const isClickOnToggler = menuToggle.contains(event.target);
 
             if (!isClickInsideMenu && !isClickOnToggler && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
-                body.classList.remove('menu-open'); // Optional: Remove class from body
+                body.classList.remove('menu-open');
                 const icon = menuToggle.querySelector('i');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
@@ -146,4 +146,24 @@ document.addEventListener('DOMContentLoaded', function() {
     animateOnScroll();
     window.addEventListener('scroll', debouncedHandleScroll, { passive: true });
     window.addEventListener('scroll', debouncedAnimateOnScroll, { passive: true });
+
+    // Scroll reveal functionality
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    function checkReveal() {
+        revealElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+            
+            if (elementTop < window.innerHeight && elementBottom > 0) {
+                element.classList.add('active');
+            }
+        });
+    }
+
+    // Initial check
+    checkReveal();
+
+    // Check on scroll
+    window.addEventListener('scroll', checkReveal);
 });
