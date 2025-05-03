@@ -406,11 +406,35 @@ article:hover h3 {
 
 body.page-404 {
   padding-top: 0 !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+body.page-404 .nature-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.error-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .error-container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -422,17 +446,24 @@ body.page-404 {
   margin-top: 0;
 }
 
-body.page-404 .nature-bg-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
+body.page-404 header {
+  position: relative;
+  z-index: 3;
+  left: 50px;
+  right: 50px;
+  width: calc(100% - 100px);
 }
 
-body.page-404 .content-overlay {
-  background: rgba(0, 0, 0, 0.5);
+.error-content {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
 }
 
 .error-code {
@@ -441,6 +472,7 @@ body.page-404 .content-overlay {
   margin: 0 0 10px 0;
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
   line-height: 1;
+  color: #ffffff;
 }
 
 .error-title {
@@ -448,6 +480,7 @@ body.page-404 .content-overlay {
   font-size: clamp(1.5rem, 6vw, 2.25rem);
   margin: 0 0 30px 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
 }
 
 .error-message {
@@ -457,16 +490,19 @@ body.page-404 .content-overlay {
   margin: 0 0 40px 0;
   line-height: 1.6;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
 }
 
 .back-home {
-  display: inline-block;
-  background: linear-gradient(135deg, #004d40, #00251a);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #8b2635, #6a1c29);
   color: white;
   padding: 12px 25px;
   border-radius: 25px;
   font-weight: 600;
-  box-shadow: 0 3px 10px rgba(0, 77, 64, 0.25);
+  box-shadow: 0 3px 10px rgba(139, 38, 53, 0.25);
   text-decoration: none;
   font-family: "Playfair Display", serif;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -475,9 +511,13 @@ body.page-404 .content-overlay {
 }
 
 .back-home:hover {
-  background: linear-gradient(135deg, #00695c, #003d33);
+  background: linear-gradient(135deg, #9e2d3d, #781f2e);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 77, 64, 0.35);
+  box-shadow: 0 5px 15px rgba(139, 38, 53, 0.35);
+}
+
+.back-home i {
+  font-size: 1.1em;
 }
 
 .poem-quote {
@@ -486,6 +526,7 @@ body.page-404 .content-overlay {
   font-size: clamp(1.1rem, 4vw, 1.375rem);
   margin-top: 50px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
 }
 
 @media (min-width: 1200px) {
@@ -504,6 +545,7 @@ body.page-404 .content-overlay {
     left: 30px;
     right: 30px;
     padding: 0.6rem 1.5rem;
+    width: calc(100% - 60px);
   }
   header h1 {
     font-size: 1.5rem;
@@ -519,6 +561,11 @@ body.page-404 .content-overlay {
     max-width: 800px;
     padding: 60px 20px;
   }
+  body.page-404 header {
+    left: 30px;
+    right: 30px;
+    width: calc(100% - 60px);
+  }
 }
 
 @media (max-width: 768px) {
@@ -526,6 +573,7 @@ body.page-404 .content-overlay {
     left: 15px;
     right: 15px;
     padding: 0.5rem 1rem;
+    width: calc(100% - 30px);
   }
   header h1 {
     font-size: 1.3rem;
@@ -605,6 +653,27 @@ body.page-404 .content-overlay {
     z-index: 998;
     backdrop-filter: blur(3px);
   }
+  .error-content {
+    padding: 2rem;
+  }
+  .error-code {
+    font-size: clamp(4rem, 15vw, 6rem);
+  }
+  .error-title {
+    font-size: clamp(1.25rem, 5vw, 2rem);
+  }
+  .error-message {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+  }
+  .back-home {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  body.page-404 header {
+    left: 15px;
+    right: 15px;
+    width: calc(100% - 30px);
+  }
 }
 
 @media (max-width: 600px) {
@@ -612,6 +681,7 @@ body.page-404 .content-overlay {
     left: 15px;
     right: 15px;
     padding: 0.5rem 1rem;
+    width: calc(100% - 30px);
   }
   nav {
     width: 85%;
@@ -630,6 +700,11 @@ body.page-404 .content-overlay {
     padding: 30px 15px;
     border-radius: 10px;
   }
+  body.page-404 header {
+    left: 15px;
+    right: 15px;
+    width: calc(100% - 30px);
+  }
 }
 
 @media (max-width: 380px) {
@@ -637,6 +712,7 @@ body.page-404 .content-overlay {
     left: 10px;
     right: 10px;
     padding: 0.4rem 0.8rem;
+    width: calc(100% - 20px);
   }
   header h1 {
     font-size: 1.1rem;
@@ -653,6 +729,11 @@ body.page-404 .content-overlay {
   }
   .menu-toggle {
     font-size: 20px;
+  }
+  body.page-404 header {
+    left: 10px;
+    right: 10px;
+    width: calc(100% - 20px);
   }
 }
 
