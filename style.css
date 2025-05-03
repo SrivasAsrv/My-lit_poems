@@ -44,7 +44,7 @@ header:hover {
 header h1 {
   margin: 0;
   padding: 0;
-  font-size: 1.6rem; /* Use rem for font size */
+  font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   line-height: 25px;
@@ -81,7 +81,7 @@ nav ul li a {
   color: #333;
   padding: 0 10px;
   border-radius: 6px;
-  font-size: 0.85rem; /* Use rem for font size */
+  font-size: 0.85rem;
   transition: all 0.3s ease;
   font-weight: 500;
   letter-spacing: 0.2px;
@@ -110,7 +110,7 @@ nav ul li a:hover:before {
 }
 
 nav ul li a.active {
-  color: #8b2635; /* Burgundy instead of teal */
+  color: #8b2635;
   font-weight: 600;
 }
 
@@ -122,13 +122,13 @@ nav ul li a.active:after {
   transform: translateX(-50%);
   width: 20px;
   height: 3px;
-  background: #8b2635; /* Burgundy underline */
+  background: #8b2635;
   border-radius: 3px;
 }
 
 nav ul li:last-child a {
-  background: linear-gradient(135deg, #8b2635, #6a1c29); /* Burgundy gradient */
-  color: #ffffff; /* Brighter white */
+  background: linear-gradient(135deg, #8b2635, #6a1c29);
+  color: #ffffff;
   padding: 0 15px;
   border-radius: 20px;
   font-weight: 600;
@@ -136,17 +136,13 @@ nav ul li:last-child a {
   line-height: 20px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   text-transform: uppercase;
-  font-size: 0.7rem; /* Use rem for font size */
+  font-size: 0.7rem;
   letter-spacing: 0.5px;
   transition: all 0.25s ease;
 }
 
 nav ul li:last-child a:hover {
-  background: linear-gradient(
-    135deg,
-    #9e2d3d,
-    #781f2e
-  ); /* Lighter burgundy gradient */
+  background: linear-gradient(135deg, #9e2d3d, #781f2e);
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 5px 12px rgba(139, 38, 53, 0.35);
   letter-spacing: 0.7px;
@@ -172,7 +168,6 @@ nav ul li:last-child a:before {
   z-index: 1001;
 }
 
-/* Hero and Background Styling - Fixed */
 .nature-bg-container {
   background-image: url("bgnature.jpg");
   background-size: cover;
@@ -182,7 +177,7 @@ nav ul li:last-child a:before {
   width: 100%;
   margin: 0;
   border-radius: 0;
-  position: relative; /* Changed from fixed to relative */
+  position: relative;
   overflow: hidden;
 }
 
@@ -192,7 +187,7 @@ nav ul li:last-child a:before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.25); /* Slightly lighter overlay */
+  background: rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -203,38 +198,37 @@ nav ul li:last-child a:before {
 }
 
 .content-overlay h2 {
-  font-size: clamp(3rem, 10vw, 7.5rem); /* Responsive font size using clamp */
+  font-size: clamp(3rem, 10vw, 7.5rem);
   margin-bottom: 30px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   font-family: "Dancing Script", cursive;
   font-weight: 600;
   letter-spacing: 1px;
-  animation: fadeInDown 1.2s ease-out; /* Added animation */
+  animation: fadeInDown 1.2s ease-out;
 }
 
 .content-overlay p {
-  font-size: clamp(1rem, 3vw, 2rem); /* Responsive font size using clamp */
+  font-size: clamp(1rem, 3vw, 2rem);
   max-width: 800px;
   line-height: 1.6;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-  animation: fadeIn 1.5s ease-out; /* Added animation */
+  animation: fadeIn 1.5s ease-out;
 }
 
-/* Call to Action Buttons - Fixed functionality */
 .cta-buttons {
   margin-top: 40px;
   display: flex;
   gap: 20px;
   justify-content: center;
-  animation: fadeInUp 1.8s ease-out; /* Added animation */
+  animation: fadeInUp 1.8s ease-out;
 }
 
 .btn {
   display: inline-block;
-  padding: 0.8rem 2rem; /* Use rem for padding */
+  padding: 0.8rem 2rem;
   border-radius: 50px;
   font-family: "Playfair Display", serif;
-  font-size: 1rem; /* Use rem for font size */
+  font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -261,7 +255,6 @@ nav ul li:last-child a:before {
   left: 100%;
 }
 
-/* Animated Scroll Down Arrow */
 .scroll-down-arrow {
   position: absolute;
   bottom: 40px;
@@ -303,25 +296,33 @@ nav ul li:last-child a:before {
   }
 }
 
-/* Main Content Sections - Fixed positioning */
 main {
   position: relative;
-  background-color: #f9f6f0; /* Matches body background */
+  background-color: #f9f6f0;
   z-index: 1;
-  padding: 50px 10px; /* Add horizontal padding to main */
+  padding: 50px 10px;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .content-section {
-  max-width: 100%; /* Allow full width within main's padding */
+  max-width: 100%;
   margin: 0 auto;
-  padding: 40px 15px; /* Adjust padding */
-  background: #ffffff; /* Pure white for content section */
+  padding: 40px 15px;
+  background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
-  animation: fadeIn 0.8s ease-out;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.reveal {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
 }
 
 .content-section:hover {
@@ -329,7 +330,6 @@ main {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Article adjustments */
 article {
   transition: transform 0.3s ease;
 }
@@ -339,30 +339,29 @@ article:hover {
 }
 
 .content-section h2 {
-  font-size: 2rem; /* Use rem for font size */
+  font-size: 2rem;
   margin: 0 0 20px;
 }
 
 article h3 {
-  font-size: 1.6rem; /* Use rem for font size */
+  font-size: 1.6rem;
   transition: color 0.3s ease;
 }
 
 article p {
-  font-size: 1rem; /* Use rem for font size */
-  line-height: 1.7; /* Improve readability */
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 article a {
-  color: #8b2635 !important; /* Override inline style with burgundy */
-  font-size: 0.9rem !important; /* Use rem for font size */
+  color: #8b2635 !important;
+  font-size: 0.9rem !important;
 }
 
 article:hover h3 {
-  color: #8b2635 !important; /* Burgundy for hover state */
+  color: #8b2635 !important;
 }
 
-/* Animation keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -400,408 +399,12 @@ article:hover h3 {
   from {
     transform: translateX(100%);
   }
-/* Add box-sizing globally for easier layout management */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  background: #f9f6f0; /* Warm off-white background instead of cool blue-white */
-  font-family: "Playfair Display", serif;
-  margin: 0;
-  padding: 0;
-  color: #222;
-  overflow-x: hidden; /* Ensure this is definitely active */
-}
-
-header {
-  background: rgba(249, 246, 240, 0.85);
-  color: #222;
-  padding: 0.6rem 1.5rem;
-  height: auto;
-  min-height: 25px;
-  border-radius: 25px;
-  box-shadow: 0 2px 16px rgba(139, 38, 53, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  top: 20px;
-  width: auto;
-  left: 50px;
-  right: 50px;
-  margin: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-header:hover {
-  background: rgba(255, 255, 255, 0.95);
-}
-
-header h1 {
-  margin: 0;
-  padding: 0;
-  font-size: 1.6rem; /* Use rem for font size */
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  line-height: 25px;
-  font-family: "Dancing Script", cursive;
-}
-
-nav {
-  position: relative;
-  height: 25px;
-  display: flex;
-  align-items: center;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 6px;
-  height: 100%;
-  align-items: center;
-}
-
-nav ul li {
-  margin: 0;
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  padding: 0 10px;
-  border-radius: 6px;
-  font-size: 0.85rem; /* Use rem for font size */
-  transition: all 0.3s ease;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  display: block;
-  position: relative;
-  z-index: 1;
-  line-height: 20px;
-  font-family: "Playfair Display", serif;
-}
-
-nav ul li a:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background: rgba(38, 128, 128, 0.08);
-  border-radius: 8px;
-  transition: height 0.2s ease;
-  z-index: -1;
-}
-
-nav ul li a:hover:before {
-  height: 100%;
-}
-
-nav ul li a.active {
-  color: #8b2635; /* Burgundy instead of teal */
-  font-weight: 600;
-}
-
-nav ul li a.active:after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 3px;
-  background: #8b2635; /* Burgundy underline */
-  border-radius: 3px;
-}
-
-nav ul li:last-child a {
-  background: linear-gradient(135deg, #8b2635, #6a1c29); /* Burgundy gradient */
-  color: #ffffff; /* Brighter white */
-  padding: 0 15px;
-  border-radius: 20px;
-  font-weight: 600;
-  box-shadow: 0 3px 10px rgba(139, 38, 53, 0.25);
-  line-height: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  text-transform: uppercase;
-  font-size: 0.7rem; /* Use rem for font size */
-  letter-spacing: 0.5px;
-  transition: all 0.25s ease;
-}
-
-nav ul li:last-child a:hover {
-  background: linear-gradient(
-    135deg,
-    #9e2d3d,
-    #781f2e
-  ); /* Lighter burgundy gradient */
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 5px 12px rgba(139, 38, 53, 0.35);
-  letter-spacing: 0.7px;
-}
-
-nav ul li:last-child a:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: 0 2px 8px rgba(139, 38, 53, 0.2);
-}
-
-nav ul li:last-child a:before {
-  display: none;
-}
-
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: #222;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-}
-
-/* Hero and Background Styling - Fixed */
-.nature-bg-container {
-  background-image: url("bgnature.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  width: 100%;
-  margin: 0;
-  border-radius: 0;
-  position: relative; /* Changed from fixed to relative */
-  overflow: hidden;
-}
-
-.content-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.25); /* Slightly lighter overlay */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  padding: 20px;
-}
-
-.content-overlay h2 {
-  font-size: clamp(3rem, 10vw, 7.5rem); /* Responsive font size using clamp */
-  margin-bottom: 30px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-  font-family: "Dancing Script", cursive;
-  font-weight: 600;
-  letter-spacing: 1px;
-  animation: fadeInDown 1.2s ease-out; /* Added animation */
-}
-
-.content-overlay p {
-  font-size: clamp(1rem, 3vw, 2rem); /* Responsive font size using clamp */
-  max-width: 800px;
-  line-height: 1.6;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-  animation: fadeIn 1.5s ease-out; /* Added animation */
-}
-
-/* Call to Action Buttons - Fixed functionality */
-.cta-buttons {
-  margin-top: 40px;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  animation: fadeInUp 1.8s ease-out; /* Added animation */
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.8rem 2rem; /* Use rem for padding */
-  border-radius: 50px;
-  font-family: "Playfair Display", serif;
-  font-size: 1rem; /* Use rem for font size */
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border: 2px solid transparent;
-  text-align: center;
-  min-width: 180px;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  transition: all 0.4s ease;
-}
-
-.btn:hover:after {
-  left: 100%;
-}
-
-/* Animated Scroll Down Arrow */
-.scroll-down-arrow {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  cursor: pointer;
-  animation: bounce 2s infinite;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.2);
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: 24px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.scroll-down-arrow:hover {
-  background-color: rgba(0, 0, 0, 0.4);
-  transform: translateX(-50%) scale(1.1);
-}
-
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0) translateX(-50%);
-  }
-  40% {
-    transform: translateY(-15px) translateX(-50%);
-  }
-  60% {
-    transform: translateY(-7px) translateX(-50%);
-  }
-}
-
-/* Main Content Sections - Fixed positioning */
-main {
-  position: relative;
-  background-color: #f9f6f0; /* Matches body background */
-  z-index: 1;
-  padding: 50px 10px; /* Add horizontal padding to main */
-}
-
-.content-section {
-  max-width: 100%; /* Allow full width within main's padding */
-  margin: 0 auto;
-  padding: 40px 15px; /* Adjust padding */
-  background: #ffffff; /* Pure white for content section */
-  border-radius: 16px;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  position: relative;
-  animation: fadeInUp 1s ease-out; /* Added animation */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.content-section:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Article adjustments */
-article {
-  transition: transform 0.3s ease;
-}
-
-article:hover {
-  transform: translateX(5px);
-}
-
-.content-section h2 {
-  font-size: 2rem; /* Use rem for font size */
-  margin: 0 0 20px;
-}
-
-article h3 {
-  font-size: 1.6rem; /* Use rem for font size */
-  transition: color 0.3s ease;
-}
-
-article p {
-  font-size: 1rem; /* Use rem for font size */
-  line-height: 1.7; /* Improve readability */
-}
-
-article a {
-  color: #8b2635 !important; /* Override inline style with burgundy */
-  font-size: 0.9rem !important; /* Use rem for font size */
-}
-
-article:hover h3 {
-  color: #8b2635 !important; /* Burgundy for hover state */
-}
-
-/* Animation keyframes */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
   to {
-    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* --- 404 Page Specific Styles --- */
-
-/* Ensure body padding override only applies when needed, maybe use a specific class on body for 404 page if necessary,
-   or ensure the !important isn't causing issues elsewhere. For now, keeping it as requested. */
 body.page-404 {
-  /* Added a class selector for specificity */
   padding-top: 0 !important;
 }
 
@@ -819,9 +422,7 @@ body.page-404 {
   margin-top: 0;
 }
 
-/* Ensure background covers the whole 404 page */
 body.page-404 .nature-bg-container {
-  /* Specificity for 404 page */
   position: fixed;
   top: 0;
   left: 0;
@@ -831,13 +432,12 @@ body.page-404 .nature-bg-container {
 }
 
 body.page-404 .content-overlay {
-  /* Specificity for 404 page */
-  background: rgba(0, 0, 0, 0.5); /* Slightly darker overlay */
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .error-code {
   font-family: "Dancing Script", cursive;
-  font-size: clamp(5rem, 20vw, 7.5rem); /* Responsive font size */
+  font-size: clamp(5rem, 20vw, 7.5rem);
   margin: 0 0 10px 0;
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
   line-height: 1;
@@ -845,14 +445,14 @@ body.page-404 .content-overlay {
 
 .error-title {
   font-family: "Playfair Display", serif;
-  font-size: clamp(1.5rem, 6vw, 2.25rem); /* Responsive font size */
+  font-size: clamp(1.5rem, 6vw, 2.25rem);
   margin: 0 0 30px 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .error-message {
   font-family: "Playfair Display", serif;
-  font-size: clamp(1rem, 3vw, 1.125rem); /* Responsive font size */
+  font-size: clamp(1rem, 3vw, 1.125rem);
   max-width: 600px;
   margin: 0 0 40px 0;
   line-height: 1.6;
@@ -883,24 +483,11 @@ body.page-404 .content-overlay {
 .poem-quote {
   font-family: "Dancing Script", cursive;
   font-style: italic;
-  font-size: clamp(1.1rem, 4vw, 1.375rem); /* Responsive font size */
+  font-size: clamp(1.1rem, 4vw, 1.375rem);
   margin-top: 50px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-/* --- Optimization Notes --- */
-/*
-* Consider optimizing the background image ('bgnature.jpg'). Large images significantly impact load time.
-*   - Resize the image to the maximum dimensions it will be displayed at.
-*   - Use appropriate compression (e.g., TinyPNG, Squoosh).
-*   - Consider modern formats like WebP or AVIF for better compression.
-* The JavaScript scroll handler ('handleScroll') runs frequently. For more complex sites,
-*   consider debouncing or throttling this function to improve performance, though it's likely fine here.
-*/
-
-/* --- Refined Media Queries --- */
-
-/* Larger screens */
 @media (min-width: 1200px) {
   header {
     left: 50px;
@@ -912,7 +499,6 @@ body.page-404 .content-overlay {
   }
 }
 
-/* Tablets and smaller laptops */
 @media (max-width: 1024px) {
   header {
     left: 30px;
@@ -930,12 +516,11 @@ body.page-404 .content-overlay {
     padding: 0 12px;
   }
   .content-section {
-    max-width: 800px; /* Restore max-width for larger screens */
+    max-width: 800px;
     padding: 60px 20px;
   }
 }
 
-/* Smaller tablets */
 @media (max-width: 768px) {
   header {
     left: 15px;
@@ -965,11 +550,15 @@ body.page-404 .content-overlay {
     right: -100%;
     width: 80%;
     max-width: 300px;
-    height: 100vh;
-    background: rgba(249, 246, 240, 0.98);
-    transition: right 0.3s ease;
+    min-height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    transition: all 0.3s ease;
     z-index: 999;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    padding: 80px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
   }
   nav.active {
     right: 0;
@@ -977,25 +566,34 @@ body.page-404 .content-overlay {
   nav ul {
     flex-direction: column;
     height: auto;
-    padding: 80px 20px 20px;
-    gap: 1.5rem;
+    padding: 0;
+    gap: 0.5rem;
+    width: 100%;
   }
   nav ul li {
     width: 100%;
     text-align: center;
+    height: auto;
+    margin: 0.5rem 0;
   }
   nav ul li a {
     display: block;
-    padding: 0.8rem 1.2rem;
+    padding: 1rem;
     font-size: 1.1rem;
     width: 100%;
+    color: #222;
+    border-radius: 8px;
+    background: rgba(139, 38, 53, 0.05);
+  }
+  nav ul li a:hover {
+    background: rgba(139, 38, 53, 0.1);
+    transform: translateX(5px);
   }
   nav ul li:last-child a {
     margin-top: 1rem;
     font-size: 0.9rem;
-    padding: 0.6rem 1.2rem;
+    padding: 1rem;
   }
-  /* Overlay when menu is open */
   body.menu-open::after {
     content: "";
     position: fixed;
@@ -1003,73 +601,37 @@ body.page-404 .content-overlay {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 998;
+    backdrop-filter: blur(3px);
   }
 }
 
-/* Mobile devices */
 @media (max-width: 600px) {
   header {
     left: 15px;
     right: 15px;
     padding: 0.5rem 1rem;
   }
-
-  /* Mobile menu adjustments */
-  nav ul {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Start fully off-screen */
-    bottom: 0;
-    width: 80%; /* Use percentage width */
-    max-width: 300px; /* Add a max-width */
-    background: rgba(249, 246, 240, 0.98); /* Use body background color */
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem; /* Increase gap */
-    padding-top: 60px; /* Add padding to avoid header overlap */
-    transform: translateX(0); /* Remove transform */
-    transition: right 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transition */
-    z-index: 999;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1); /* Add shadow */
-    left: auto; /* Reset left */
+  nav {
+    width: 85%;
   }
-
-  nav ul.active {
-    right: 0; /* Slide in */
-    transform: translateX(0); /* Ensure no transform interference */
-  }
-
-  nav ul li {
-    width: 100%;
-    text-align: center;
-  }
-
   nav ul li a {
-    padding: 0.8rem 1.2rem; /* Adjust padding */
-    font-size: 1.1rem; /* Slightly larger font */
-    width: auto;
-    display: inline-block; /* Allow text centering */
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
   }
-
   nav ul li:last-child a {
-    font-size: 0.9rem;
-    padding: 0.6rem 1.2rem;
-    margin-top: 1rem; /* Add space above sign-in */
+    padding: 0.8rem 1rem;
   }
-
   main {
     padding: 30px 10px;
   }
-
   .content-section {
-    padding: 30px 15px; /* Adjust padding */
+    padding: 30px 15px;
     border-radius: 10px;
   }
 }
 
-/* Very small devices */
 @media (max-width: 380px) {
   header {
     left: 10px;
@@ -1094,87 +656,72 @@ body.page-404 .content-overlay {
   }
 }
 
-/* Button Colors Updated */
 .btn-primary {
-  background: linear-gradient(
-    135deg,
-    #004d40,
-    #00251a
-  ); /* Deep Teal/Green gradient */
+  background: linear-gradient(135deg, #004d40, #00251a);
   color: #ffffff;
   border-color: rgba(255, 255, 255, 0.2);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(
-    135deg,
-    #00695c,
-    #003d33
-  ); /* Lighter Teal/Green gradient */
+  background: linear-gradient(135deg, #00695c, #003d33);
   transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0, 77, 64, 0.3); /* Teal shadow */
+  box-shadow: 0 6px 16px rgba(0, 77, 64, 0.3);
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.1); /* More subtle transparent white */
-  color: #ffffff; /* White text */
-  border-color: rgba(255, 255, 255, 0.7); /* Stronger white border */
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(3px);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
 }
 
 .btn-secondary:hover {
-  background: rgba(
-    255,
-    255,
-    255,
-    0.2
-  ); /* Slightly more opaque white on hover */
+  background: rgba(255, 255, 255, 0.3);
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  border-color: #ffffff; /* Solid white border on hover */
+  border-color: #ffffff;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* Back to Top Button */
 #backToTopBtn {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   bottom: 20px;
   right: 30px;
-  z-index: 990; /* Below header but above most content */
+  z-index: 990;
   border: none;
   outline: none;
-  background-color: #8b2635; /* Burgundy color */
+  background-color: #8b2635;
   color: white;
   cursor: pointer;
-  padding: 0; /* Remove padding */
-  border-radius: 50%; /* Make it circular */
-  width: 45px; /* Set width */
-  height: 45px; /* Set height */
-  font-size: 18px; /* Adjust icon size */
+  padding: 0;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 18px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-  opacity: 0; /* Start fully transparent */
-  transform: translateY(10px); /* Start slightly lower */
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 #backToTopBtn.show {
-  display: block; /* Show the button */
-  opacity: 0.8; /* Make it slightly transparent */
-  transform: translateY(0); /* Move to final position */
+  display: block;
+  opacity: 0.8;
+  transform: translateY(0);
 }
 
 #backToTopBtn:hover {
-  background-color: #6a1c29; /* Darker burgundy on hover */
-  opacity: 1; /* Fully opaque on hover */
+  background-color: #6a1c29;
+  opacity: 1;
 }
 
-/* Adjust button position on smaller screens */
 @media (max-width: 768px) {
   #backToTopBtn {
     right: 20px;
@@ -1191,7 +738,6 @@ body.page-404 .content-overlay {
 }
 
 .poem-article h3 {
-  /* Style for poem titles */
   font-size: 1.6rem;
   transition: color 0.3s ease;
 }
@@ -1201,7 +747,6 @@ body.page-404 .content-overlay {
   margin-bottom: 15px;
 }
 
-/* Main Content Improvements */
 .section-description {
   font-size: 1.1rem;
   color: #555;
@@ -1217,6 +762,73 @@ body.page-404 .content-overlay {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.story-article {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.story-article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.story-article h3 {
+  color: #8b2635;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.story-excerpt {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.story-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.story-genre,
+.story-length {
+  font-size: 0.85rem;
+  color: #666;
+  background: rgba(139, 38, 53, 0.1);
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: 500;
+}
+
+.story-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(139, 38, 53, 0.1);
+}
+
+.story-author {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
 }
 
 .poem-meta {
@@ -1239,10 +851,14 @@ body.page-404 .content-overlay {
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
+  background: rgba(139, 38, 53, 0.1);
+  padding: 5px 12px;
+  border-radius: 15px;
 }
 
 .read-more:hover {
-  color: #6a1c29;
+  color: #ffffff;
+  background: #8b2635;
   transform: translateX(5px);
 }
 
@@ -1251,7 +867,6 @@ body.page-404 .content-overlay {
   margin-top: 3rem;
 }
 
-/* Collections Grid */
 .collections-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1294,7 +909,6 @@ body.page-404 .content-overlay {
   transform: translateX(5px);
 }
 
-/* Footer Styles */
 .site-footer {
   background: #f9f6f0;
   padding: 4rem 2rem 2rem;
@@ -1359,26 +973,6 @@ body.page-404 .content-overlay {
   padding-left: 5px;
 }
 
-.newsletter-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.newsletter-form input {
-  padding: 0.8rem;
-  border: 1px solid rgba(139, 38, 53, 0.2);
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.newsletter-form input:focus {
-  outline: none;
-  border-color: #8b2635;
-  box-shadow: 0 0 0 2px rgba(139, 38, 53, 0.1);
-}
-
 .footer-bottom {
   text-align: center;
   margin-top: 3rem;
@@ -1387,22 +981,19 @@ body.page-404 .content-overlay {
   color: #666;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .poems-grid,
-  .collections-grid {
+  .collections-grid,
+  .stories-grid {
     grid-template-columns: 1fr;
   }
-
   .footer-content {
     grid-template-columns: 1fr;
     text-align: center;
   }
-
   .social-links {
     justify-content: center;
   }
-
   .footer-section ul {
     text-align: center;
   }

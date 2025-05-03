@@ -1,169 +1,325 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Mobile menu toggle with GSAP
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('nav');
     const body = document.body;
+    let menuTl = gsap.timeline({ paused: true });
 
     if (menuToggle && navMenu) {
+        // Create menu animation timeline with smoother transitions
+        menuTl.to(navMenu, {
+            right: 0,
+            duration: 0.4,
+            ease: "power3.out"
+        })
+        .to('.menu-toggle i', {
+            rotate: 180,
+            duration: 0.4,
+            ease: "power3.out"
+        }, 0)
+        .to('body.menu-open::after', {
+            opacity: 1,
+            duration: 0.3,
+            ease: "power2.out"
+        }, 0);
+
+        // Enhanced click handling with touch support
         menuToggle.addEventListener('click', function(event) {
+            event.preventDefault();
             event.stopPropagation();
-            navMenu.classList.toggle('active');
-            body.classList.toggle('menu-open');
             
-            // Toggle icon between bars and times
-            const icon = menuToggle.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
+            if (navMenu.classList.contains('active')) {
+                menuTl.reverse();
+                body.classList.remove('menu-open');
+                body.style.overflow = '';
+                menuToggle.setAttribute('aria-expanded', 'false');
             } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                menuTl.play();
+                body.classList.add('menu-open');
+                body.style.overflow = 'hidden';
+                menuToggle.setAttribute('aria-expanded', 'true');
+            }
+            
+            navMenu.classList.toggle('active');
+        });
+
+        // Improved keyboard navigation
+        menuToggle.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                menuToggle.click();
             }
         });
 
-        // Close menu when clicking on a link
+        // Enhanced link interactions
         const navLinks = document.querySelectorAll('nav ul li a');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            // Add hover effect
+            link.addEventListener('mouseenter', () => {
+                gsap.to(link, {
+                    scale: 1.05,
+                    duration: 0.2,
+                    ease: "power2.out"
+                });
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                gsap.to(link, {
+                    scale: 1,
+                    duration: 0.2,
+                    ease: "power2.out"
+                });
+            });
+
+            // Improved click handling
+            link.addEventListener('click', function(event) {
                 if (navMenu.classList.contains('active')) {
+                    menuTl.reverse();
                     navMenu.classList.remove('active');
                     body.classList.remove('menu-open');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+                    body.style.overflow = '';
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Add keyboard navigation
+            link.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    link.click();
                 }
             });
         });
 
-        // Close menu when clicking outside
+        // Enhanced outside click detection
         document.addEventListener('click', function(event) {
             const isClickInsideMenu = navMenu.contains(event.target);
             const isClickOnToggler = menuToggle.contains(event.target);
 
             if (!isClickInsideMenu && !isClickOnToggler && navMenu.classList.contains('active')) {
+                menuTl.reverse();
                 navMenu.classList.remove('active');
                 body.classList.remove('menu-open');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                body.style.overflow = '';
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
     }
 
-    // --- Debounce utility function ---
-    function debounce(func, wait = 16) {
-        let timeout;
-        return function(...args) {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(this, args), wait);
-        };
-    }
-
-    // --- Header scroll effect & Back to Top Button ---
+    // Improved header scroll effect
     const header = document.querySelector('header');
-    const backToTopButton = document.getElementById("backToTopBtn");
-    let lastScrollTop = 0;
-    const scrollThreshold = 300; // Pixels to scroll before showing the button
-
-    const handleScroll = () => {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        // Header effect
-        if (header) {
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                header.style.transform = 'translateY(-10px)';
-                header.style.opacity = '0.8';
-            } else {
-                header.style.transform = 'translateY(0)';
-                header.style.opacity = '1';
+    if (header) {
+        gsap.to(header, {
+            scrollTrigger: {
+                trigger: document.body,
+                start: "top top",
+                end: "max",
+                onUpdate: (self) => {
+                    if (self.direction === 1) { // scrolling down
+                        gsap.to(header, {
+                            y: -10,
+                            opacity: 0.8,
+                            duration: 0.4,
+                            ease: "power2.out"
+                        });
+                    } else { // scrolling up
+                        gsap.to(header, {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.4,
+                            ease: "power2.out"
+                        });
+                    }
+                }
             }
-        }
-
-        // Back to Top button visibility
-        if (backToTopButton) {
-            if (scrollTop > scrollThreshold) {
-                backToTopButton.classList.add("show");
-            } else {
-                backToTopButton.classList.remove("show");
-            }
-        }
-
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-    };
-
-    // Debounced scroll handlers
-    const debouncedHandleScroll = debounce(handleScroll, 30);
-
-    // Back to Top button click event
-    if (backToTopButton) {
-        backToTopButton.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-    
-    // Fixed scroll down arrow functionality
+
+    // Create and style back to top button
+    const backToTopButton = document.createElement('button');
+    backToTopButton.id = 'backToTopBtn';
+    backToTopButton.setAttribute('aria-label', 'Back to top');
+    backToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    document.body.appendChild(backToTopButton);
+
+    // Enhanced back to top button
+    if (backToTopButton) {
+        // Add hover effect
+        backToTopButton.addEventListener('mouseenter', () => {
+            gsap.to(backToTopButton, {
+                scale: 1.1,
+                duration: 0.2,
+                ease: "power2.out"
+            });
+        });
+        
+        backToTopButton.addEventListener('mouseleave', () => {
+            gsap.to(backToTopButton, {
+                scale: 1,
+                duration: 0.2,
+                ease: "power2.out"
+            });
+        });
+
+        // Show/hide based on scroll position
+        gsap.to(backToTopButton, {
+            scrollTrigger: {
+                trigger: document.body,
+                start: "top top",
+                end: "max",
+                onUpdate: (self) => {
+                    if (self.progress > 0.2) {
+                        gsap.to(backToTopButton, {
+                            opacity: 0.8,
+                            y: 0,
+                            duration: 0.4,
+                            ease: "power2.out"
+                        });
+                    } else {
+                        gsap.to(backToTopButton, {
+                            opacity: 0,
+                            y: 10,
+                            duration: 0.4,
+                            ease: "power2.out"
+                        });
+                    }
+                }
+            }
+        });
+
+        // Smooth scroll to top
+        backToTopButton.addEventListener("click", () => {
+            gsap.to(window, {
+                scrollTo: { y: 0 },
+                duration: 1,
+                ease: "power3.inOut"
+            });
+        });
+
+        // Add keyboard support
+        backToTopButton.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                backToTopButton.click();
+            }
+        });
+    }
+
+    // Enhanced scroll down arrow with mobile support
     const scrollDownArrow = document.getElementById('scrollDown');
-    
     if (scrollDownArrow) {
-        scrollDownArrow.addEventListener('click', function() {
+        // Smoother animation
+        gsap.to(scrollDownArrow, {
+            y: 15,
+            repeat: -1,
+            yoyo: true,
+            duration: 1.2,
+            ease: "power1.inOut"
+        });
+
+        // Add hover effect
+        scrollDownArrow.addEventListener('mouseenter', () => {
+            gsap.to(scrollDownArrow, {
+                scale: 1.1,
+                duration: 0.2,
+                ease: "power2.out"
+            });
+        });
+        
+        scrollDownArrow.addEventListener('mouseleave', () => {
+            gsap.to(scrollDownArrow, {
+                scale: 1,
+                duration: 0.2,
+                ease: "power2.out"
+            });
+        });
+
+        // Enhanced click/touch handling
+        const handleScrollDown = () => {
             const mainContent = document.getElementById('mainContent');
             if (mainContent) {
-                mainContent.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                // Fallback if main content element doesn't exist
-                window.scrollTo({
-                    top: window.innerHeight,
-                    behavior: 'smooth'
+                gsap.to(window, {
+                    scrollTo: { y: mainContent.offsetTop },
+                    duration: 1.2,
+                    ease: "power3.inOut"
                 });
             }
+        };
+
+        // Add both click and touch events
+        scrollDownArrow.addEventListener('click', handleScrollDown);
+        scrollDownArrow.addEventListener('touchend', (e) => {
+            e.preventDefault(); // Prevent double-tap zoom
+            handleScrollDown();
+        });
+
+        // Add touch feedback
+        scrollDownArrow.addEventListener('touchstart', () => {
+            gsap.to(scrollDownArrow, {
+                scale: 1.1,
+                duration: 0.2,
+                ease: "power2.out"
+            });
+        });
+
+        scrollDownArrow.addEventListener('touchend', () => {
+            gsap.to(scrollDownArrow, {
+                scale: 1,
+                duration: 0.2,
+                ease: "power2.out"
+            });
         });
     }
 
-    // Add animation to articles on scroll
-    const animateOnScroll = function() {
-        const articles = document.querySelectorAll('article');
-        articles.forEach((article, index) => {
-            const articlePosition = article.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
-            if (articlePosition < screenPosition) {
-                setTimeout(() => {
-                    article.style.opacity = 1;
-                    article.style.transform = 'translateX(0)';
-                }, index * 200); // Staggered animation
-            }
+    // Enhanced reveal animations
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(element => {
+        gsap.from(element, {
+            scrollTrigger: {
+                trigger: element,
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            y: 50,
+            duration: 1.2,
+            ease: "power3.out"
         });
-    };
-    const debouncedAnimateOnScroll = debounce(animateOnScroll, 30);
+    });
 
-    // Initialize articles for animation
+    // Enhanced article interactions
     const articles = document.querySelectorAll('article');
     articles.forEach(article => {
-        article.style.opacity = 0;
-        article.style.transform = 'translateX(20px)';
-        article.style.transition = 'all 0.5s ease-out';
-    });
-    // Run animation check on load and scroll
-    animateOnScroll();
-    window.addEventListener('scroll', debouncedHandleScroll, { passive: true });
-    window.addEventListener('scroll', debouncedAnimateOnScroll, { passive: true });
-
-    // Scroll reveal functionality
-    const revealElements = document.querySelectorAll('.reveal');
-    
-    function checkReveal() {
-        revealElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementBottom = element.getBoundingClientRect().bottom;
-            
-            if (elementTop < window.innerHeight && elementBottom > 0) {
-                element.classList.add('active');
-            }
+        // Add hover effect
+        article.addEventListener('mouseenter', () => {
+            gsap.to(article, {
+                x: 5,
+                scale: 1.02,
+                duration: 0.3,
+                ease: "power2.out"
+            });
         });
-    }
+        
+        article.addEventListener('mouseleave', () => {
+            gsap.to(article, {
+                x: 0,
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
 
-    // Initial check
-    checkReveal();
-
-    // Check on scroll
-    window.addEventListener('scroll', checkReveal);
+        // Add click effect
+        article.addEventListener('click', () => {
+            gsap.to(article, {
+                scale: 0.98,
+                duration: 0.1,
+                ease: "power2.in",
+                yoyo: true,
+                repeat: 1
+            });
+        });
+    });
 });
